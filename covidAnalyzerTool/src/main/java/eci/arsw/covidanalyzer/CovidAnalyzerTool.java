@@ -45,13 +45,14 @@ public class CovidAnalyzerTool implements Runnable{
             else{
                 threads.addLast(new CovidAnalyzerThread(resultFiles,resultAnalyzer, i*d, (i*d)+d-1, amountOfFilesProcessed, testReader));
             }
-            amountOfFilesProcessed.incrementAndGet();
+            threads.getLast().start();
         }
     }
 
     private List<File> getResultFileList() {
         List<File> csvFiles = new ArrayList<>();
-        try (Stream<Path> csvFilePaths = Files.walk(Paths.get("src/main/resources/")).filter(path -> path.getFileName().toString().endsWith(".csv"))) {
+        try (Stream<Path> csvFilePaths = Files.walk(Paths.get("." +
+                "/covidAnalyzerTool/src/main/resources/")).filter(path -> path.getFileName().toString().endsWith(".csv"))) {
             csvFiles = csvFilePaths.map(Path::toFile).collect(Collectors.toList());
         } catch (IOException e) {
             e.printStackTrace();

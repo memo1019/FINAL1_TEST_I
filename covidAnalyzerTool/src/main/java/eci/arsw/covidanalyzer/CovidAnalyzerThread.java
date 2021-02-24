@@ -56,7 +56,9 @@ public class CovidAnalyzerThread extends Thread{
          */
         public synchronized void reanudarHilo() {
             suspender = false;
-            notify();
+            synchronized(this){
+                notifyAll();
+            }
         }
 }
 

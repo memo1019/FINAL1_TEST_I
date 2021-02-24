@@ -7,4 +7,3 @@ public class CovidException extends Exception{
     }
 
 }
-}

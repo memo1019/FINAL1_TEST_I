@@ -13,6 +13,9 @@ import java.util.concurrent.CopyOnWriteArrayList;
 public class ICovidAggregateServiceStub implements ICovidAggregateService{
     private List<Result> res1 = new CopyOnWriteArrayList<>();
 
+    public ICovidAggregateServiceStub(){
+    }
+
 
     @Override
     public synchronized void aggregateResult(Result result,ResultType resultType) throws CovidException {

@@ -25,7 +25,8 @@ public class CovidAggregateController {
 
     @RequestMapping(value = "/true-positive", method = RequestMethod.POST)
     public ResponseEntity<?> addTruePositiveResult(@RequestBody Result result) throws CovidException {
-        return new ResponseEntity<>(covidAggregateService.aggregateResult(result, ResultType.TRUE_POSITIVE), HttpStatus.ACCEPTED);
+        covidAggregateService.aggregateResult(result,ResultType.TRUE_POSITIVE);
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
     //TODO: Implemente todos los metodos GET que hacen falta.
 
@@ -39,7 +40,9 @@ public class CovidAggregateController {
     }
     @RequestMapping(value = "/false-positive", method = RequestMethod.POST)
     public ResponseEntity<?> addFalsePositiveResult(@RequestBody Result result) throws CovidException {
-        return new ResponseEntity<>(covidAggregateService.aggregateResult(result,ResultType.FALSE_POSITIVE), HttpStatus.ACCEPTED);
+        covidAggregateService.aggregateResult(result,ResultType.FALSE_POSITIVE);
+        return new ResponseEntity<>(HttpStatus.CREATED);
+
     }
     @RequestMapping(value = "/true-negative", method = RequestMethod.GET)
     public ResponseEntity<?> getTrueNegativeResult() {
@@ -47,7 +50,8 @@ public class CovidAggregateController {
     }
     @RequestMapping(value = "/true-negative", method = RequestMethod.POST)
     public ResponseEntity<?> addTrueNegativeResult(@RequestBody Result result) throws CovidException {
-        return new ResponseEntity<>(covidAggregateService.aggregateResult(result,ResultType.TRUE_NEGATIVE), HttpStatus.ACCEPTED);
+        covidAggregateService.aggregateResult(result,ResultType.TRUE_NEGATIVE);
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
     @RequestMapping(value = "/false-Negative", method = RequestMethod.GET)
     public ResponseEntity<?> getFalseNegativeResult() {
@@ -55,7 +59,8 @@ public class CovidAggregateController {
     }
     @RequestMapping(value = "/false-Negative", method = RequestMethod.POST)
     public ResponseEntity<?> addFalseNegativeResult(@RequestBody Result result) throws CovidException {
-        return new ResponseEntity<>(covidAggregateService.aggregateResult(result,ResultType.FALSE_NEGATIVE), HttpStatus.ACCEPTED);
+        covidAggregateService.aggregateResult(result,ResultType.FALSE_POSITIVE);
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
 //    //TODO: Implemente el método.

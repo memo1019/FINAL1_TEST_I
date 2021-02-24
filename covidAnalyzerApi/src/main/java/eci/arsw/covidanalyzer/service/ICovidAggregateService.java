@@ -6,7 +6,6 @@ import eci.arsw.covidanalyzer.model.ResultType;
 import java.util.UUID;
 
 public interface ICovidAggregateService {
-
     /**
      * Add a new result into the specified result type storage.
      *
@@ -14,7 +13,7 @@ public interface ICovidAggregateService {
      * @param type
      * @return
      */
-    boolean aggregateResult(Result result, ResultType type);
+    boolean aggregateResult(Result result);
 
     /**
      * Get all the results for the specified result type.
